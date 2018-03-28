@@ -2,7 +2,7 @@ const express        = require('express');
 const bodyParser     = require('body-parser');
 const _               = require('lodash');
 
-var { emp } = require('./model/emp');
+var { Employee } = require('./model/Employee');
 var { mongoose } = require('./mongoose');
 var {ObjectID} = require('mongodb');
 var routes = require('./routes');
