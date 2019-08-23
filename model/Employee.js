@@ -33,15 +33,7 @@ EmployeeSchema = new Schema({
      type : Boolean ,
      default : false
  }});
-//class call it simply by Employee.
-EmployeeSchema.statics= {
-    
 
-}
-//instance call it simply by response.
-EmployeeSchema.methods= {
-
-}
 var Employee = mongoose.model('Employee',EmployeeSchema);
 module.exports = {
 	Employee: Employee

@@ -19,7 +19,7 @@ apiRoutes = function(router) {
     router.post('/postData', api.employee.postData);
     router.get('/getData', api.employee.getData);
     router.get('/getDataById', api.employee.getDataById);
-    router.delete('/deleteDataById',api.employee.deleteDataById);
+    router.delete('/deleteDataById',api.employee.deleteDataById); 
     router.patch('/updateById',api.employee.updateById);
     router.get('/displaySimilarNames',api.employee.displaySimilarNames);
     router.delete('/deleteDataByIdVirtually',api.employee.deleteDataByIdVirtually);

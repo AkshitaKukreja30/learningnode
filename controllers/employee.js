@@ -1,7 +1,7 @@
-var express = require('express')
-const bodyParser     = require('body-parser');
-const _               = require('lodash');
-var { Employee } = require('../model/Employeeloyee');
+var express = require('express')  //Framework designed for building web applications and APIs.
+const bodyParser     = require('body-parser') //extracts the entire body portion of an incoming request stream and exposes it on req.body .
+const _               = require('lodash');  //library for utility functions
+var { Employee } = require('../model/Employee');
 var { mongoose } = require('../mongoose');
 var {ObjectID} = require('mongodb');
 
@@ -10,6 +10,7 @@ var employee = {
 		console.log(req.body.name);
 		console.log(req.body.cgiCode);
 		console.log(req.body.emailId);
+		console.log("entire request");
 		var EmployeeObj = new Employee({
 			name : req.body.name ,
 			cgiCode : req.body.cgiCode ,
@@ -51,12 +52,14 @@ var employee = {
 		.sort({'name':1})
 		.skip(skipRecords)
 		.then((doc) => {
+			console.log(doc);
 			res.send(doc);
-
+			
 
 		} , (e) => {
 			res.send(e);
 			res.status(480).send(e);
+			console.log(doc);
 		});
 
 	}  ,
@@ -84,12 +87,12 @@ var employee = {
 
     	res.status(400).send();
     });
-
-} ,
+},
 
 deleteDataById :(req,res) => {
-
+    console.log("in delete");
 	var id = req.query.id;
+	console.log(id);
 	if(!ObjectID.isValid(id)) {
 		console.log('enter a valid id');
 		return res.status(404).send();
@@ -119,7 +122,7 @@ deleteDataById :(req,res) => {
 } ,
 
 updateById : (req,res) => {
-	var id = req.query.id ;
+	var id = req.body.id ;
 	var body=_.pick(req.body, ['name','cgiCode','emailId','address.city','address.street','address.pincode','isDeleted']);
 	if(!ObjectID.isValid(id)) {
 		console.log('enter a valid id');
